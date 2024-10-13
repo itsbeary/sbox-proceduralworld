@@ -1,0 +1,203 @@
+{
+  "__guid": "96fbefcf-8974-43a1-b6dc-a05f1ec259e8",
+  "GameObjects": [
+    {
+      "__guid": "9056074d-43ef-43f9-804f-2e992b719143",
+      "Flags": 0,
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "36f33dfc-221a-4b4f-b07b-30dc973ef348",
+          "SkyIndirectLighting": true,
+          "SkyMaterial": "materials/skybox/skybox_day_01.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "c9cd3349-e300-4f5c-a735-2eb75c517b25",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "MultiBounce": false,
+          "Projection": "Sphere",
+          "RenderDynamically": false,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "d721ee55-e783-406b-9471-2ca7d97104da",
+      "Flags": 0,
+      "Name": "Sun",
+      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "1fc1a1b0-1eb0-4321-8aed-8edafd906b05",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.94419,0.97767,1,1",
+          "Shadows": true,
+          "SkyColor": "0.2532,0.32006,0.35349,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3e9bc5d5-9e24-4e24-8500-602fd85baff9",
+      "Flags": 0,
+      "Name": "Camera",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "2bab3363-7fd8-4148-846e-cc1170dca3f5",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 100,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 51000,
+          "ZNear": 10
+        },
+        {
+          "__type": "CameraController",
+          "__guid": "8d95e95e-6e73-48fc-aff4-f5b8411ab975",
+          "FreeCamFastSpeed": 50,
+          "FreeCamSlowSpeed": 1,
+          "FreeCamSpeed": 10
+        }
+      ]
+    },
+    {
+      "__guid": "8af7934a-26ee-4b36-b5eb-d8fe1713d9d5",
+      "Flags": 0,
+      "Name": "World",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "ProceduralWorld",
+          "__guid": "265ad5c0-5994-437d-a8ef-1c6d14e2190f",
+          "ChunkSize": 1000,
+          "LodDrawDistance": 10000,
+          "MapSize": 8,
+          "Seed": "00fd4481e08dfa0f"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "6764afb1-08ea-4f82-8312-71f7a62ca1ac",
+          "Flags": 0,
+          "Name": "Monuments",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "ProceduralWorldMonuments",
+              "__guid": "7816be08-9375-4ad2-be33-d93f0ae3533b",
+              "monuments": [
+                {
+                  "_type": "gameobject",
+                  "prefab": "world/monuments/testmonument.prefab"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "17ddc806-0b8e-4ae7-85ed-34f8684d626e",
+      "Flags": 0,
+      "Name": "Cubemap Fog",
+      "Position": "-15040.62,15683.06,14648.01",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "3005d32d-9a9d-4a96-b221-a8cc91922899",
+          "Blur": 0,
+          "EndDistance": 50000,
+          "FalloffExponent": 1.5,
+          "HeightExponent": 2,
+          "HeightStart": 2000,
+          "HeightWidth": 0,
+          "Sky": "materials/skybox/skybox_day_01.vmat",
+          "StartDistance": 0,
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "13bd24f0-9206-4e5c-b47d-0eeef3d0d21b",
+      "Flags": 0,
+      "Name": "Plane",
+      "Position": "0,0,4000",
+      "Scale": "500000,500000,1",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "b339e3b4-fe0a-4bf8-b967-d23ae3582f24",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/water/water_temp.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderOptions": {
+            "GameLayer": true,
+            "OverlayLayer": false,
+            "BloomLayer": false,
+            "AfterUILayer": false
+          },
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "NetworkInterpolation": true,
+    "PhysicsSubSteps": 1,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "procworld",
+  "Description": "",
+  "ResourceVersion": 1,
+  "__references": [],
+  "__version": 1
+}

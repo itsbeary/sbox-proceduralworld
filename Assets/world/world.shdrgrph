@@ -1,0 +1,117 @@
+{
+  "Model": null,
+  "Description": "",
+  "BlendMode": "Opaque",
+  "nodes": [
+    {
+      "_class": "Result",
+      "DefaultOpacity": 1,
+      "DefaultRoughness": 1,
+      "DefaultMetalness": 1,
+      "DefaultAmbientOcclusion": 1,
+      "Identifier": "0",
+      "Position": "1224,-288",
+      "Albedo": {
+        "Identifier": "2",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Tint",
+      "Identifier": "1",
+      "Position": "468,-444"
+    },
+    {
+      "_class": "Multiply",
+      "DefaultA": 0,
+      "DefaultB": 1,
+      "Identifier": "2",
+      "Position": "972,-288",
+      "A": {
+        "Identifier": "1",
+        "Output": "RGBA"
+      },
+      "B": {
+        "Identifier": "3",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Branch",
+      "Name": "",
+      "IsAttribute": true,
+      "Operator": "GreaterThan",
+      "Enabled": false,
+      "UI": {},
+      "Identifier": "3",
+      "Position": "756,-180",
+      "True": {
+        "Identifier": "7",
+        "Output": "Result"
+      },
+      "False": {
+        "Identifier": "8",
+        "Output": "Result"
+      },
+      "A": {
+        "Identifier": "6",
+        "Output": "Result"
+      },
+      "B": {
+        "Identifier": "5",
+        "Output": "Z"
+      }
+    },
+    {
+      "_class": "WorldPosition",
+      "Identifier": "4",
+      "Position": "228,108"
+    },
+    {
+      "_class": "SplitVector",
+      "Identifier": "5",
+      "Position": "492,108",
+      "Input": {
+        "Identifier": "4",
+        "Output": "Result"
+      }
+    },
+    {
+      "_class": "Float",
+      "Min": 0,
+      "Max": 1,
+      "Value": 4225,
+      "Name": "",
+      "IsAttribute": false,
+      "UI": {},
+      "Identifier": "6",
+      "Position": "480,36"
+    },
+    {
+      "_class": "TextureTriplanar",
+      "Image": "materials/dev/white_color.tga",
+      "Sampler": {},
+      "UI": {
+        "Name": "Sand",
+        "Default": "1,1,1,1",
+        "ShowExtension": true,
+        "SrgbRead": true
+      },
+      "Identifier": "7",
+      "Position": "468,-360"
+    },
+    {
+      "_class": "TextureTriplanar",
+      "Image": "materials/dev/white_color.tga",
+      "Sampler": {},
+      "UI": {
+        "Name": "Grass",
+        "Default": "1,1,1,1",
+        "ShowExtension": true,
+        "SrgbRead": true
+      },
+      "Identifier": "8",
+      "Position": "468,-180"
+    }
+  ]
+}

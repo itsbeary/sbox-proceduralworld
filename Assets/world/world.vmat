@@ -1,0 +1,14 @@
+// THIS FILE IS AUTO-GENERATED
+
+Layer0
+{
+	shader "world/world.shader"
+
+	g_flSlopeThershold "0.790"
+	g_vDirtSlope "[0.560784 0.270588 0.129412 1.000000]"
+	Grass "world/textures/grass-seamless.jpg"
+	Sand "world/textures/sand.jpg"
+
+	//---- Fog ----
+	g_bFogEnabled "1"
+}
