@@ -2,12 +2,12 @@
 
 Layer0
 {
-	shader "world/world.shader"
+	shader "world/world_2.shader"
 
-	g_flSlope "0.800"
+	g_flmax_grass_slope "0.901"
+	g_flmin_rock_slope "0.704"
 	Grass "world/textures/grass-seamless.jpg"
 	Rock "world/textures/seamless_rock2.jpg"
-	Sand "world/textures/sand.jpg"
 
 	//---- Fog ----
 	g_bFogEnabled "1"

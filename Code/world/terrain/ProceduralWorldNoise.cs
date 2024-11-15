@@ -4,26 +4,20 @@ using System;
 
 public class ProceduralWorldNoise
 {
-	static int _seed = 0;
+	static int _seed = Game.Random.Next(99999);
 
 	public static float Sample( ProceduralWorld world, Vector2 position )
 	{
-		_seed = world.Seed.FastHash() / 1000;
 		float elevation = 0;
 		float frequency = 0.001f; // Frequency of the terrain features
-		float amplitude = 200f; // Overall height of the terrain
+		float amplitude = 100f; // Overall height of the terrain
 
-		// Perlin noise for general terrain
 		elevation += PerlinNoise( position, frequency, amplitude );
-
-		// Ridged multifractal noise for sharper features
 		elevation += RidgedMultifractalNoise( position, frequency * 2, amplitude / 2 );
 
-		// Simplex noise for adding detail
 		elevation += SimplexNoise( position, frequency * 4, amplitude / 4 );
 
-		// Add height scale
-		elevation *= world.HeightScale;
+		elevation *= world.WorldHeightScale;
 
 		// Add falloff map
 		float falloff = GenerateFalloffMap( world, position.x, position.y );
@@ -56,8 +50,7 @@ public class ProceduralWorldNoise
 
 	public static float GenerateFalloffMap( ProceduralWorld world, float x, float y )
 	{
-		float metre = 39.3701f;
-		float size = (world.ChunkSize * metre) * world.MapSize;
+		float size = (world.ChunkDetail) * world.ChunkAmount;
 
 		// the origin position is -19685? should be 0,0 but this hack works so!
 		x += 19685;

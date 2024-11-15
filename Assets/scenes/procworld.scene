@@ -2,6 +2,21 @@
   "__guid": "96fbefcf-8974-43a1-b6dc-a05f1ec259e8",
   "GameObjects": [
     {
+      "__guid": "d822d8a7-5d5c-4e5b-b466-0e25183b0ed1",
+      "Flags": 0,
+      "Name": "Scene Information",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.SceneInformation",
+          "__guid": "ee17562a-df11-4623-8562-c410e2c93ea7",
+          "Description": "",
+          "SceneTags": "",
+          "Title": "procworld"
+        }
+      ]
+    },
+    {
       "__guid": "9056074d-43ef-43f9-804f-2e992b719143",
       "Flags": 0,
       "Name": "2D Skybox",
@@ -57,39 +72,6 @@
       ]
     },
     {
-      "__guid": "3e9bc5d5-9e24-4e24-8500-602fd85baff9",
-      "Flags": 0,
-      "Name": "Camera",
-      "Tags": "maincamera",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.CameraComponent",
-          "__guid": "2bab3363-7fd8-4148-846e-cc1170dca3f5",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 100,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 51000,
-          "ZNear": 10
-        },
-        {
-          "__type": "CameraController",
-          "__guid": "8d95e95e-6e73-48fc-aff4-f5b8411ab975",
-          "FreeCamFastSpeed": 50,
-          "FreeCamSlowSpeed": 1,
-          "FreeCamSpeed": 10
-        }
-      ]
-    },
-    {
       "__guid": "8af7934a-26ee-4b36-b5eb-d8fe1713d9d5",
       "Flags": 0,
       "Name": "World",
@@ -97,23 +79,19 @@
       "Components": [
         {
           "__type": "ProceduralWorld",
-          "__guid": "265ad5c0-5994-437d-a8ef-1c6d14e2190f",
-          "ChunkSize": 1000,
-          "LodDrawDistance": 10000,
-          "MapSize": 8,
-          "Seed": "00fd4481e08dfa0f"
+          "__guid": "b3b318e1-5900-49c7-b07e-85e5a415ebe3"
         }
       ],
       "Children": [
         {
-          "__guid": "6764afb1-08ea-4f82-8312-71f7a62ca1ac",
+          "__guid": "aae273c7-e89b-4870-be0c-ef28411fcab3",
           "Flags": 0,
           "Name": "Monuments",
           "Enabled": true,
           "Components": [
             {
-              "__type": "ProceduralWorldMonuments",
-              "__guid": "7816be08-9375-4ad2-be33-d93f0ae3533b",
+              "__type": "MonumentSpawner",
+              "__guid": "43f823b2-6e0b-45e9-99c8-da52162f6351",
               "monuments": [
                 {
                   "_type": "gameobject",
@@ -159,6 +137,7 @@
           "__type": "Sandbox.ModelRenderer",
           "__guid": "b339e3b4-fe0a-4bf8-b967-d23ae3582f24",
           "BodyGroups": 18446744073709551615,
+          "CreateAttachments": false,
           "MaterialOverride": "materials/water/water_temp.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderOptions": {
@@ -169,6 +148,39 @@
           },
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "3e9bc5d5-9e24-4e24-8500-602fd85baff9",
+      "Flags": 0,
+      "Name": "Camera",
+      "Position": "0,0,163.9394",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "2bab3363-7fd8-4148-846e-cc1170dca3f5",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 100,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 51000,
+          "ZNear": 10
+        },
+        {
+          "__type": "RustFreeCamera",
+          "__guid": "2e716e2a-1114-4174-b3c1-d5bf5eb98e9f",
+          "RunSpeed": 40,
+          "WalkSpeed": 20
         }
       ]
     }
@@ -182,6 +194,9 @@
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
+    "Metadata": {
+      "Title": "procworld"
+    },
     "NavMesh": {
       "Enabled": false,
       "IncludeStaticBodies": true,
@@ -195,9 +210,9 @@
       "IncludedBodies": ""
     }
   },
+  "ResourceVersion": 2,
   "Title": "procworld",
-  "Description": "",
-  "ResourceVersion": 1,
+  "Description": null,
   "__references": [],
-  "__version": 1
+  "__version": 2
 }

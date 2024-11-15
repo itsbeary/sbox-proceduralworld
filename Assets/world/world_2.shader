@@ -74,10 +74,12 @@ PS
 	#include "common/pixel.hlsl"
 	
 	SamplerState g_sSampler0 < Filter( ANISO ); AddressU( WRAP ); AddressV( WRAP ); >;
-	CreateInputTexture2D( Sand, Srgb, 8, "None", "_color", ",0/,0/0", Default4( 1.00, 1.00, 1.00, 1.00 ) );
+	CreateInputTexture2D( Rock, Srgb, 8, "None", "_color", ",0/,0/0", Default4( 1.00, 1.00, 1.00, 1.00 ) );
 	CreateInputTexture2D( Grass, Srgb, 8, "None", "_color", ",0/,0/0", Default4( 1.00, 1.00, 1.00, 1.00 ) );
-	Texture2D g_tSand < Channel( RGBA, Box( Sand ), Srgb ); OutputFormat( DXT5 ); SrgbRead( True ); >;
+	Texture2D g_tRock < Channel( RGBA, Box( Rock ), Srgb ); OutputFormat( DXT5 ); SrgbRead( True ); >;
 	Texture2D g_tGrass < Channel( RGBA, Box( Grass ), Srgb ); OutputFormat( DXT5 ); SrgbRead( True ); >;
+	float g_flmax_grass_slope < UiGroup( ",0/,0/0" ); Default1( 0.9 ); Range1( 0, 1 ); >;
+	float g_flmin_rock_slope < UiGroup( ",0/,0/0" ); Default1( 0.7282602 ); Range1( 0, 1 ); >;
 		
 	float4 TexTriplanar_Color( in Texture2D tTex, in SamplerState sSampler, float3 vPosition, float3 vNormal )
 	{
@@ -114,19 +116,23 @@ PS
 		m.Emission = float3( 0, 0, 0 );
 		m.Transmission = 0;
 		
-		float4 l_0 = i.vTintColor;
-		float4 l_1 = TexTriplanar_Color( g_tSand, g_sSampler0, (i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz) / 39.3701, normalize( i.vNormalWs.xyz ) );
-		float4 l_2 = TexTriplanar_Color( g_tGrass, g_sSampler0, (i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz) / 39.3701, normalize( i.vNormalWs.xyz ) );
-		float3 l_3 = i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz;
-		float l_4 = l_3.z;
-		float4 l_5 = 4225 > l_4 ? l_1 : l_2;
-		float4 l_6 = l_0 * l_5;
+		float4 l_0 = TexTriplanar_Color( g_tRock, g_sSampler0, (i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz) / 39.3701, normalize( i.vNormalWs.xyz ) );
+		float4 l_1 = TexTriplanar_Color( g_tGrass, g_sSampler0, (i.vPositionWithOffsetWs.xyz + g_vHighPrecisionLightingOffsetWs.xyz) / 39.3701, normalize( i.vNormalWs.xyz ) );
+		float l_2 = g_flmax_grass_slope;
+		float l_3 = i.vNormalOs.z;
+		float l_4 = g_flmin_rock_slope;
+		float l_5 = max( l_3, l_4 );
+		float l_6 = min( l_2, l_5 );
+		float l_7 = l_6 - l_4;
+		float l_8 = l_2 - l_4;
+		float l_9 = l_7 / l_8;
+		float4 l_10 = saturate( lerp( l_0, l_1, l_9 ) );
 		
-		m.Albedo = l_6.xyz;
+		m.Albedo = l_10.xyz;
 		m.Opacity = 1;
 		m.Roughness = 1;
-		m.Metalness = 0.51000595;
-		m.AmbientOcclusion = 0.30461404;
+		m.Metalness = 0;
+		m.AmbientOcclusion = 1;
 		
 		m.AmbientOcclusion = saturate( m.AmbientOcclusion );
 		m.Roughness = saturate( m.Roughness );

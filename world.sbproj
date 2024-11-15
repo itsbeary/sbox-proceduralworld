@@ -8,7 +8,7 @@
   "Resources": null,
   "PackageReferences": [],
   "EditorReferences": null,
-  "IsWhitelistDisabled": true,
+  "IsWhitelistDisabled": false,
   "Metadata": {
     "MaxPlayers": 64,
     "MinPlayers": 1,
@@ -23,6 +23,7 @@
     "LeaderboardType": "None",
     "CsProjName": "",
     "StartupScene": "scenes/procworld.scene",
-    "LaunchMode": "Normal"
+    "LaunchMode": "Normal",
+    "ControlModes": {}
   }
 }

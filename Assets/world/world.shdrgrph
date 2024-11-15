@@ -7,8 +7,8 @@
       "_class": "Result",
       "DefaultOpacity": 1,
       "DefaultRoughness": 1,
-      "DefaultMetalness": 1,
-      "DefaultAmbientOcclusion": 1,
+      "DefaultMetalness": 0.51000595,
+      "DefaultAmbientOcclusion": 0.30461404,
       "Identifier": "0",
       "Position": "1224,-288",
       "Albedo": {
@@ -70,7 +70,7 @@
     {
       "_class": "SplitVector",
       "Identifier": "5",
-      "Position": "492,108",
+      "Position": "480,108",
       "Input": {
         "Identifier": "4",
         "Output": "Result"
@@ -111,7 +111,7 @@
         "SrgbRead": true
       },
       "Identifier": "8",
-      "Position": "468,-180"
+      "Position": "240,-156"
     }
   ]
 }
